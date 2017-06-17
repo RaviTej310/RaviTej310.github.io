@@ -1,0 +1,473 @@
+<html>
+<head>
+<title>
+RaviTej310
+</title>
+<style>
+html, body {
+    overflow: hidden;
+}
+.canvas {
+position:absolute;
+top:0;
+left:0;
+}
+</style>
+</head>
+<body>
+<canvas class="canvas" id="my_canvas" width="2340px" height="1640px"></canvas>
+<canvas class="canvas" id="myCanvas" width="2340px" height="1640px"></canvas>
+<script>
+var canvas = document.getElementById("my_canvas");
+var c = canvas.getContext("2d");
+
+//create te container that will hold the boincing balls.
+var container = {
+  x: 0,
+  y: 0,
+  z: -1,
+  width: window.innerWidth,
+  height: window.innerHeight
+};
+//create the array of circles that will be animated
+
+var circles=[];
+var i;
+for(i=0;i<150;i++)
+{
+circles.push({
+  x: Math.random()*window.innerWidth,
+  y: Math.random()*window.innerHeight,
+  r: 10,
+  vx: Math.random()*(-3)+Math.random()*(3),
+  vy: Math.random()*(-1)+Math.random()*(1),
+  color: 125
+});
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function animate() {
+  //draw the container
+  c.fillStyle = "#000000";
+  c.fillRect(container.x, container.y, container.width, container.height);
+
+  //loop throughj the circles array
+  for (var i = 0; i < circles.length; i++) {
+    //draw the circles
+    //c.fillStyle = getRandomColor();
+    c.fillStyle="#696969"
+    c.beginPath();
+    c.arc(circles[i].x, circles[i].y, 0, 0, Math.PI * 2, true);
+    c.fill()
+
+    //time to animate our circles ladies and gentlemen.
+    if (circles[i].x - circles[i].r + circles[i].vx < container.x || circles[i].x + circles[i].r + circles[i].vx > container.x + container.width) {
+      circles[i].x = Math.random()*window.innerWidth;
+	  circles[i].y = Math.random()*window.innerHeight;
+    }
+
+    if (circles[i].y + circles[i].r + circles[i].vy > container.y + container.height || circles[i].y - circles[i].r + circles[i].vy < container.y) {
+      circles[i].x = Math.random()*window.innerWidth;
+	  circles[i].y = Math.random()*window.innerHeight;
+    }
+
+    circles[i].x += circles[i].vx
+    circles[i].y += circles[i].vy
+
+    for (var j=0; j < circles.length; j++)
+	if (j!=i)
+	    {
+		dist = (circles[i].x-circles[j].x)*(circles[i].x-circles[j].x)+(circles[i].y-circles[j].y)*(circles[i].y-circles[j].y)
+		if (dist<50000 && dist>50)
+		    {
+			width_decrease=dist;
+			var line_width=3*10/(Math.sqrt(width_decrease));
+			//var c=document.getElementById("my_canvas");
+			//var ctx=c.getContext("2d");
+			c.beginPath();
+			c.moveTo(circles[i].x,circles[i].y);
+			c.lineTo(circles[j].x,circles[j].y);
+			if (j<10)
+			    c.strokeStyle = '#ff0000';
+			else 
+			    c.strokeStyle = '#3f3f3f';
+			c.lineWidth = line_width;
+			c.stroke();
+		    }
+	    }
+  }
+
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+animate();
+</script>
+
+<script>
+
+//Background end
+//Name start
+
+function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+
+fcolor="#888585"
+
+function erase()
+{
+ctx.clearRect(300,200,700,500);
+}
+
+var c_name = document.getElementById("myCanvas");
+var ctx = c_name.getContext("2d");
+var x=1000;
+var y=500;
+var y_cord=0
+
+show();
+
+myVar = setTimeout(erase, x);
+myVar = setTimeout(r, x);
+x=x+y;
+myVar = setTimeout(erase, x);
+myVar = setTimeout(a, x);
+x=x+y;
+myVar = setTimeout(erase, x);
+myVar = setTimeout(v, x);
+x=x+y;
+myVar = setTimeout(erase, x);
+myVar = setTimeout(i, x);
+x=x+y;
+myVar = setTimeout(erase, x);
+myVar = setTimeout(t, x);
+x=x+y;
+myVar = setTimeout(erase, x);
+myVar = setTimeout(e, x);
+x=x+y;
+myVar = setTimeout(erase, x);
+myVar = setTimeout(j, x);
+x=x+y;
+myVar = setTimeout(erase, x);
+myVar = setTimeout(a, x);
+x=x+y;
+myVar = setTimeout(show, x);
+myVar = setTimeout(a, x);
+
+
+
+function r()
+{
+//second E tooth
+ctx.beginPath();
+ctx.moveTo(755,360+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,360+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second horizontal
+ctx.beginPath();
+ctx.moveTo(755,300+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second vertical
+ctx.beginPath();
+ctx.moveTo(760,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(760,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//R segment
+ctx.beginPath();
+ctx.moveTo(811,360+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,427+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//R curve
+ctx.beginPath();
+ctx.lineWidth=10;
+ctx.moveTo(861, 298+y_cord);
+ctx.bezierCurveTo(876, 320+y_cord, 876, 340+y_cord, 861, 362+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+}
+
+function a()
+{
+//second vertical
+ctx.beginPath();
+ctx.moveTo(760,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(760,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//first slope
+ctx.beginPath();
+ctx.moveTo(761,298+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,427+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//A segment
+ctx.beginPath();
+ctx.moveTo(755,360+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(810,360+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+}
+
+function v()
+{
+//first slope
+ctx.beginPath();
+ctx.moveTo(761,298+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,427+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second slope
+ctx.beginPath();
+ctx.moveTo(860,427+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(962,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+}
+
+function i()
+{
+//second vertical
+ctx.beginPath();
+ctx.moveTo(760,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(760,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+}
+
+function t()
+{
+//first horizontal
+ctx.beginPath();
+ctx.moveTo(630,300+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(740,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second horizontal
+ctx.beginPath();
+ctx.moveTo(755,300+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//first vertical
+ctx.beginPath();
+ctx.moveTo(735,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(735,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second vertical
+ctx.beginPath();
+ctx.moveTo(760,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(760,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+}
+
+function e()
+{
+//second E tooth
+ctx.beginPath();
+ctx.moveTo(755,360+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,360+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second horizontal
+ctx.beginPath();
+ctx.moveTo(755,300+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second vertical
+ctx.beginPath();
+ctx.moveTo(760,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(760,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//third E tooth
+ctx.beginPath();
+ctx.moveTo(755,425+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,425+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+}
+
+function j()
+{
+//first horizontal
+ctx.beginPath();
+ctx.moveTo(630,300+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(740,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//first vertical
+ctx.beginPath();
+ctx.moveTo(735,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(735,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//J curve
+ctx.beginPath();
+ctx.lineWidth=10;
+ctx.moveTo(740, 425+y_cord);
+ctx.bezierCurveTo(655, 425+y_cord, 640, 425+y_cord, 630, 385+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+
+}
+
+function show()
+{
+
+//first horizontal
+ctx.beginPath();
+ctx.moveTo(630,300+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(740,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second E tooth
+ctx.beginPath();
+ctx.moveTo(755,360+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,360+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second horizontal
+ctx.beginPath();
+ctx.moveTo(755,300+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//first vertical
+ctx.beginPath();
+ctx.moveTo(735,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(735,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second vertical
+ctx.beginPath();
+ctx.moveTo(760,295+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(760,430+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//third E tooth
+ctx.beginPath();
+ctx.moveTo(755,425+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,425+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//R segment
+ctx.beginPath();
+ctx.moveTo(811,360+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,427+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//first slope
+ctx.beginPath();
+ctx.moveTo(761,298+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(865,427+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//second slope
+ctx.beginPath();
+ctx.moveTo(860,427+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(962,300+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//J curve
+ctx.beginPath();
+ctx.lineWidth=10;
+ctx.moveTo(740, 425+y_cord);
+ctx.bezierCurveTo(655, 425+y_cord, 640, 425+y_cord, 630, 385+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//R curve
+ctx.beginPath();
+ctx.lineWidth=10;
+ctx.moveTo(861, 298+y_cord);
+ctx.bezierCurveTo(876, 320+y_cord, 876, 340+y_cord, 861, 362+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+//A segment
+ctx.beginPath();
+ctx.moveTo(755,360+y_cord);
+ctx.lineWidth=10;
+ctx.lineTo(810,360+y_cord);
+ctx.strokeStyle=fcolor;
+ctx.stroke();
+
+}
+</script>
+
+
+</body>
+</html>
